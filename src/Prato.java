@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
+public record Prato(String nomePrato,
+                    String descricao,
+                    Double preco) {
 
-public class Prato {
 }
