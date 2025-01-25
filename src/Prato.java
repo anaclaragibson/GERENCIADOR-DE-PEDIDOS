@@ -1,9 +1,11 @@
 public class Prato {
+    private Integer id;
     private String nomePrato;
     private String descricao;
     private Double preco;
 
     public Prato() {
+        this.id = id;
         this.nomePrato = nomePrato;
         this.descricao = descricao;
         this.preco = preco;
@@ -31,5 +33,23 @@ public class Prato {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "-------PEDIDO-------\n" +
+                "ID: " + id + "\n" +
+                "Nome Prato: " + nomePrato + "\n" +
+                "Descrição: " + descricao +
+                "Preço: R$" + preco;
+        //ajustar para que fique bonito
     }
 }
