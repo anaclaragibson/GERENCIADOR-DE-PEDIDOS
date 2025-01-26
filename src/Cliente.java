@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Cliente {
     private String nomeCliente;
     private String telefone;
+    private Pedido pedido = new Pedido();
     private Endereco endereco;
-    private List<Prato> pratosPedidos = new ArrayList<>();
     Scanner leitura = new Scanner(System.in);
 
     public Cliente() {
@@ -31,7 +29,7 @@ public class Cliente {
                     5 - Alterar endereço
                     
                     0 - Sair
-                    Escolha o número de sua opção: 
+                    Escolha o número de sua opção:
                     """;
 
             System.out.println(menu);
@@ -61,28 +59,31 @@ public class Cliente {
     }
 
     private void realizarPedido() {
-        Pedido pedido = new Pedido();
         pedido.setComanda(1);
         System.out.println("Escolha a forma de pagamento: ");
         var formaPagar = leitura.nextLine();
         pedido.setStatus(true);
         pedido.adicionarPrato();
+        pedido.calcularTotal();
     }
 
-    private void listarPedido (Pedido pedido) {
+    private void listarPedido() {
         System.out.println(pedido.getPratos());
     }
 
     private void cancelarPrato () {
-        pratosPedidos.forEach(System.out::println);
+        System.out.println(pedido.getPratos());
         System.out.println("Digite o ID do prato que deseja cancelar: ");
         var pratoCancelado = leitura.nextInt();
-        pratosPedidos.get(pratosPedidos.indexOf(pratoCancelado));
-        pratosPedidos.remove(pratoCancelado);
+        if(pratoCancelado == 1){
+            pedido.getPratos().remove(0);
+        }
+
     }
 
     private void cancelarPedido () {
-
+        pedido.getPratos().clear();
+        System.out.println("Pedido cancelado");
     }
 
 

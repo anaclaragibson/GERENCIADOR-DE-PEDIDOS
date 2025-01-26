@@ -96,7 +96,7 @@ public class Pedido {
                     pratos.add(pratoPedido4);
                     break;
                 case 0:
-                    System.out.println("Finalizando pedido");
+                    System.out.println("Pedido finalizado...");
                     break;
                 default:
                     System.out.println("Opção inválida");
@@ -108,6 +108,12 @@ public class Pedido {
     }
 
     public void calcularTotal(){
+        double soma = 0;
+        int i;
+        for(i = 0; i < pratos.size(); i++){
+            soma +=  pratos.get(i).getPreco();
+        }
+        System.out.printf("O VALOR TOTAL DO PEDIDO: R$%.2f\n", soma);
     }
 }
 

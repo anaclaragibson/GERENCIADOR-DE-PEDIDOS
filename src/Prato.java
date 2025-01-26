@@ -45,11 +45,11 @@ public class Prato {
 
     @Override
     public String toString() {
-        return "-------PEDIDO-------\n" +
+        return "------PRATO-----\n" +
                 "ID: " + id + "\n" +
                 "Nome Prato: " + nomePrato + "\n" +
                 "Descrição: " + descricao +
-                "Preço: R$" + preco;
+                "Preço: R$" + preco + "\n";
         //ajustar para que fique bonito
     }
 }
