@@ -4,16 +4,14 @@ public class Cliente {
     private String nomeCliente;
     private String telefone;
     private Pedido pedido = new Pedido();
-    private Endereco endereco;
     Scanner leitura = new Scanner(System.in);
 
     public Cliente() {
     }
 
-    public Cliente(String nomeCliente, String telefone, Endereco endereco) {
+    public Cliente(String nomeCliente, String telefone) {
         this.nomeCliente = nomeCliente;
         this.telefone = telefone;
-        this.endereco = getEndereco();
     }
 
     public void exibeMenu() {
@@ -61,6 +59,13 @@ public class Cliente {
     private void realizarPedido() {
         pedido.setComanda(1);
         System.out.println("Escolha a forma de pagamento: ");
+        System.out.println("""
+                1. PIX
+                2. DÉBITO
+                3. CRÉDITO
+                """);
+        var pagamento = leitura.nextInt();
+        //pedido.setPagamento(pagamento);
         var formaPagar = leitura.nextLine();
         pedido.setStatus(true);
         pedido.adicionarPrato();
@@ -71,17 +76,26 @@ public class Cliente {
         System.out.println(pedido.getPratos());
     }
 
-    private void cancelarPrato () {
-        System.out.println(pedido.getPratos());
-        System.out.println("Digite o ID do prato que deseja cancelar: ");
-        var pratoCancelado = leitura.nextInt();
-        if(pratoCancelado == 1){
-            pedido.getPratos().remove(0);
-        }
+     private void cancelarPrato () {
+        pedido.cancelarPratoo();
 
-    }
+//        System.out.println(pedido.getPratos());
+//        System.out.println("Digite o ID do prato que deseja cancelar: ");
+//        var idCancelar = leitura.nextInt();
+//        int i;
+//        for(i = 0; i < pedido.getPratos().size(); i++){
+//            idCancelar =
+//            if(idCancelar == pedido.getPratos().){
+//                pedido.getPratos().remove(idCancelar);
+//            }
+//            else{
+//                System.out.println("ID NÃO ENCONTRADO!");
+//            }
+//        }
+//
+   }
 
-    private void cancelarPedido () {
+    private void cancelarPedido() {
         pedido.getPratos().clear();
         System.out.println("Pedido cancelado");
     }
@@ -103,20 +117,14 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
 
     @Override
     public String toString() {
         return "Cliente{" +
                 "nomeCliente='" + nomeCliente + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", endereco=" + endereco +
-                '}';
+                ", telefone='" + telefone + '\'';
+
     }
+
+
 }

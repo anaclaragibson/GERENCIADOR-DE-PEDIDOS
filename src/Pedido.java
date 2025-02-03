@@ -6,19 +6,18 @@ public class Pedido {
     Scanner leitura = new Scanner(System.in);
     private int comanda = 0;
     private List<Prato> pratos = new ArrayList<>();
-    private Pagamento pagamento = new Pagamento();
     private boolean status;
 
     public Pedido(int comanda, List<Prato> pratos, String formaDePagamento, boolean status) {
         this.comanda = comanda;
         this.pratos = pratos;
-        this.pagamento = pagamento;
         this.status = status;
     }
 
     public Pedido() {
 
     }
+
 
     public int getComanda() {
         return comanda;
@@ -115,6 +114,19 @@ public class Pedido {
         }
         System.out.printf("O VALOR TOTAL DO PEDIDO: R$%.2f\n", soma);
     }
+
+    public void cancelarPratoo() {
+        System.out.println(pratos);
+        System.out.println("Digite o ID do prato que deseja cancelar: ");
+        var idCancelar = leitura.nextInt();
+        int i;
+        for(i = 0; i < idCancelar; i++){
+                pratos.remove(getPratos().get(i).getId().compareTo(idCancelar));
+            }
+
+    }
+
+
 }
 
 

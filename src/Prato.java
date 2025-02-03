@@ -3,6 +3,7 @@ public class Prato {
     private String nomePrato;
     private String descricao;
     private Double preco;
+    private Pedido pedido;
 
     public Prato() {
         this.id = id;
