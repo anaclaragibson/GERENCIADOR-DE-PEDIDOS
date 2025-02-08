@@ -115,6 +115,10 @@ public class Pedido {
     }
 
     public void cancelarPratoo() {
+        if (pratos.isEmpty()){
+            System.out.println("Pedido vazio");
+            return;
+        }
         System.out.println(pratos);
         System.out.println("Digite o ID do prato que deseja cancelar: ");
         var idCancelar = leitura.nextInt();
@@ -123,10 +127,8 @@ public class Pedido {
             if (pratos.get(i).getId() == idCancelar) {
                 pratos.remove(i);
             }
-
         }
     }
-
 
 }
 

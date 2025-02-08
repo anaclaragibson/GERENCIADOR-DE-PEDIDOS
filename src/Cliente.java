@@ -48,8 +48,19 @@ public class Cliente {
                     cancelarPedido();
                     break;
                 case 0:
-                    System.out.println("Saindo...");
-                    break;
+                    if(pedido.getPratos().isEmpty()){
+                        System.out.println("Agradecemos pela visita!");
+                        break;
+                    } else {
+                        System.out.println("Validando Pagamento...");
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException erro) {
+                            erro.printStackTrace();
+                        }
+                        System.out.println(nomeCliente + ", seu pagamento foi aprovado! Agradecemos pela visita.");
+                        break;
+                    }
                 default:
                     System.out.println("Opção inválida");
             }
@@ -66,6 +77,15 @@ public class Cliente {
                 """);
         var pagamento = leitura.nextInt();
         //pedido.setPagamento(pagamento);
+        while (pagamento != 1 && pagamento !=2 && pagamento != 3){
+            System.out.println("Forma de pagamento inválida. Tente novamente");
+            System.out.println("""
+                1. PIX
+                2. DÉBITO
+                3. CRÉDITO
+                """);
+            pagamento = leitura.nextInt();
+        }
         pedido.setStatus(true);
         pedido.adicionarPrato();
         pedido.calcularTotal();
