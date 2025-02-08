@@ -8,7 +8,7 @@ public class Pedido {
     private List<Prato> pratos = new ArrayList<>();
     private boolean status;
 
-    public Pedido(int comanda, List<Prato> pratos, String formaDePagamento, boolean status) {
+    public Pedido(int comanda, List<Prato> pratos, boolean status) {
         this.comanda = comanda;
         this.pratos = pratos;
         this.status = status;
@@ -17,7 +17,6 @@ public class Pedido {
     public Pedido() {
 
     }
-
 
     public int getComanda() {
         return comanda;
@@ -120,10 +119,12 @@ public class Pedido {
         System.out.println("Digite o ID do prato que deseja cancelar: ");
         var idCancelar = leitura.nextInt();
         int i;
-        for(i = 0; i < idCancelar; i++){
-                pratos.remove(getPratos().get(i).getId().compareTo(idCancelar));
+        for(i = 0; i < pratos.size(); i++) {
+            if (pratos.get(i).getId() == idCancelar) {
+                pratos.remove(i);
             }
 
+        }
     }
 
 

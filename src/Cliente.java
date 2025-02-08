@@ -24,7 +24,7 @@ public class Cliente {
                     2 - Listar pedido
                     3 - Cancelar prato do pedido
                     4 - Cancelar pedido
-                    5 - Alterar endereço
+                    5 - Exibir informações
                     
                     0 - Sair
                     Escolha o número de sua opção:
@@ -66,14 +66,17 @@ public class Cliente {
                 """);
         var pagamento = leitura.nextInt();
         //pedido.setPagamento(pagamento);
-        var formaPagar = leitura.nextLine();
         pedido.setStatus(true);
         pedido.adicionarPrato();
         pedido.calcularTotal();
     }
 
     private void listarPedido() {
-        System.out.println(pedido.getPratos());
+        if(pedido.getPratos().isEmpty()){
+            System.out.println("Nenhum pedido realizado!");
+        } else {
+            System.out.println(pedido.getPratos());
+        }
     }
 
      private void cancelarPrato () {
@@ -96,8 +99,13 @@ public class Cliente {
    }
 
     private void cancelarPedido() {
-        pedido.getPratos().clear();
-        System.out.println("Pedido cancelado");
+        if(pedido.getPratos().isEmpty()){
+            System.out.println("Nenhum pedido realizado!");
+        } else {
+            pedido.getPratos().clear();
+            System.out.println("Pedido cancelado!");
+        }
+
     }
 
 
